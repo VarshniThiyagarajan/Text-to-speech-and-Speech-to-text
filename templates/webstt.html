@@ -1,0 +1,140 @@
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech-to-Text Transcription</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        select, button {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .result p {
+            margin: 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Speech-to-Text Transcription</h1>
+        
+        <label for="languageSelect">Select Language:</label>
+        <select id="languageSelect">
+            <option value="ta-IN">Tamil</option>
+            <option value="en-IN">English (India)</option>
+            <option value="hi-IN">Hindi</option>
+            <option value="ml-IN">Malayalam</option>
+            <option value="kn-IN">Kannada</option>
+            <option value="ur-IN">Urdu</option>
+            <option value="te-IN">Telugu</option>
+            <option value="bn-IN">Bengali</option>
+            <option value="gu-IN">Gujarati</option>
+            <option value="pa-IN">Punjabi</option>
+            <!-- Add more options as needed -->
+        </select>
+        
+        <button onclick="startRecognition()">Start Transcription</button>
+        <div class="result" id="result"></div>
+        <button onclick="window.location.href='/text-to-speech'">Start Typing</button>
+        <button onclick="window.location.href='/phone-dial'">Back</button> 
+    </div>
+
+    <script>
+        let recognition;
+        let isRecognizing = false;
+
+        function startRecognition() {
+            const resultDiv = document.getElementById('result');
+            const languageSelect = document.getElementById('languageSelect').value;
+
+            if (!('webkitSpeechRecognition' in window)) {
+                resultDiv.innerHTML = '<p style="color: red;">Speech recognition not supported in this browser.</p>';
+                return;
+            }
+
+            if (isRecognizing) {
+                recognition.stop();
+                isRecognizing = false;
+                resultDiv.innerHTML += '<p><strong>Transcription stopped.</strong></p>';
+                return;
+            }
+
+            recognition = new webkitSpeechRecognition();
+            recognition.lang = languageSelect;
+            recognition.interimResults = true;  // Show interim results
+
+            let finalTranscript = '';
+
+            recognition.onresult = (event) => {
+                let transcript = '';
+                for (let i = event.resultIndex; i < event.results.length; ++i) {
+                    if (event.results[i].isFinal) {
+                        transcript += event.results[i][0].transcript + ' ';
+                    } else {
+                        finalTranscript += event.results[i][0].transcript;
+                        resultDiv.innerHTML = `<h2>Transcription:</h2><p>${finalTranscript}</p>`;
+                    }
+                }
+                finalTranscript = transcript;
+            };
+
+            recognition.onerror = (event) => {
+                resultDiv.innerHTML = `<p style="color: red;">Error: ${event.error}</p>`;
+            };
+
+            recognition.onend = () => {
+                isRecognizing = false;
+                resultDiv.innerHTML += `<p><strong>Final Transcription:</strong> ${finalTranscript}</p>`;
+            };
+
+            recognition.start();
+            isRecognizing = true;
+            resultDiv.innerHTML = '<p><strong>Listening...</strong></p>';
+        }
+    </script>
+</body>
+</html>

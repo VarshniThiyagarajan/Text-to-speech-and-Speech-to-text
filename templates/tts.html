@@ -1,0 +1,173 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-to-Speech Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Text-to-Speech Conversion</h1>
+            <p>Convert text to speech in multiple languages easily!</p>
+        </div>
+        
+        <div class="main-content">
+            <form action="/speak" method="POST">
+                <div class="form-group">
+                    <label for="text">Enter Text to Convert:</label>
+                    <textarea id="text" name="text" placeholder="Type your text here..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="lang">Select Language:</label>
+                    <select id="lang" name="lang">
+                        <option value="ta">Tamil</option>
+                        <option value="en">English</option>
+                        <option value="hi">Hindi</option>
+                        <option value="ml">Malayalam</option>
+                        <option value="kn">Kannada</option>
+                        <option value="te">Telugu</option>
+                        <option value="bn">Bengali</option>
+                        <option value="gu">Gujarati</option>
+                        <option value="mr">Marathi</option>
+                        <option value="pa">Punjabi</option>
+                        <option value="ur">Urdu</option>
+
+                        <option value="as">Assamese</option>
+                        <option value="or">Odia</option>
+                        <option value="sd">Sindhi</option>
+                        <option value="ks">Kashmiri</option>
+                        <option value="sa">Sanskrit</option>
+                        <option value="kok">Konkani</option>
+                        <option value="ne">Nepali</option>
+                        <option value="sat">Santali</option>
+                        <option value="mai">Maithili</option>
+                        <option value="bho">Bhojpuri</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">Convert to Speech</button>
+                <button onclick="window.location.href='/speech-to-text'">Back</button>
+            </form>
+        </div>
+        
+    </div>
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-to-Speech Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Text-to-Speech Conversion</h1>
+            <p>Convert text to speech in multiple languages with different voices and accents!</p>
+        </div>
+        
+        <div class="main-content">
+            <form action="/speak" method="POST">
+                <div class="form-group">
+                    <label for="text">Enter Text to Convert:</label>
+                    <textarea id="text" name="text" placeholder="Type your text here..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="lang">Select Language:</label>
+                    <select id="lang" name="lang">
+                        <option value="ta">Tamil</option>
+                        <option value="en">English</option>
+                        <option value="hi">Hindi</option>
+                        <option value="ml">Malayalam</option>
+                        <option value="kn">Kannada</option>
+                        <option value="te">Telugu</option>
+                        <option value="bn">Bengali</option>
+                        <option value="gu">Gujarati</option>
+                        <option value="mr">Marathi</option>
+                        <option value="pa">Punjabi</option>
+                        <option value="ur">Urdu</option>
+                        <option value="as">Assamese</option>
+                        <option value="or">Odia</option>
+                        <option value="sd">Sindhi</option>
+                        <option value="ks">Kashmiri</option>
+                        <option value="sa">Sanskrit</option>
+                        <option value="kok">Konkani</option>
+                        <option value="ne">Nepali</option>
+                        <option value="sat">Santali</option>
+                        <option value="mai">Maithili</option>
+                        <option value="bho">Bhojpuri</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="voice">Select Voice & Accent:</label>
+                    <select id="voice" name="voice">
+                        <!-- Tamil Variations -->
+                        <option value="ta_male_standard">Tamil - Male (Standard)</option>
+                        <option value="ta_female_standard">Tamil - Female (Standard)</option>
+                        <option value="ta_male_coimbatore">Tamil - Male (Coimbatore)</option>
+                        <option value="ta_female_coimbatore">Tamil - Female (Coimbatore)</option>
+                        <option value="ta_male_chennai">Tamil - Male (Chennai)</option>
+                        <option value="ta_female_chennai">Tamil - Female (Chennai)</option>
+
+                        <!-- Hindi Variations -->
+                        <option value="hi_male_standard">Hindi - Male (Standard)</option>
+                        <option value="hi_female_standard">Hindi - Female (Standard)</option>
+                        <option value="hi_male_mumbai">Hindi - Male (Mumbai Accent)</option>
+                        <option value="hi_female_mumbai">Hindi - Female (Mumbai Accent)</option>
+                        <option value="hi_male_up">Hindi - Male (UP Accent)</option>
+                        <option value="hi_female_up">Hindi - Female (UP Accent)</option>
+
+                        <!-- English (Indian) Variations -->
+                        <option value="en_male_indian_standard">English - Male (Indian Standard)</option>
+                        <option value="en_female_indian_standard">English - Female (Indian Standard)</option>
+                        <option value="en_male_british">English - Male (British)</option>
+                        <option value="en_female_british">English - Female (British)</option>
+                        <option value="en_male_american">English - Male (American)</option>
+                        <option value="en_female_american">English - Female (American)</option>
+
+                        <!-- Kannada Variations -->
+                        <option value="kn_male_standard">Kannada - Male (Standard)</option>
+                        <option value="kn_female_standard">Kannada - Female (Standard)</option>
+                        <option value="kn_male_bangalore">Kannada - Male (Bangalore Accent)</option>
+                        <option value="kn_female_bangalore">Kannada - Female (Bangalore Accent)</option>
+
+                        <!-- Malayalam Variations -->
+                        <option value="ml_male_standard">Malayalam - Male (Standard)</option>
+                        <option value="ml_female_standard">Malayalam - Female (Standard)</option>
+                        <option value="ml_male_thiruvananthapuram">Malayalam - Male (Thiruvananthapuram Accent)</option>
+                        <option value="ml_female_thiruvananthapuram">Malayalam - Female (Thiruvananthapuram Accent)</option>
+
+                        <!-- Telugu Variations -->
+                        <option value="te_male_standard">Telugu - Male (Standard)</option>
+                        <option value="te_female_standard">Telugu - Female (Standard)</option>
+                        <option value="te_male_hyderabad">Telugu - Male (Hyderabad Accent)</option>
+                        <option value="te_female_hyderabad">Telugu - Female (Hyderabad Accent)</option>
+
+                        <!-- Bengali Variations -->
+                        <option value="bn_male_standard">Bengali - Male (Standard)</option>
+                        <option value="bn_female_standard">Bengali - Female (Standard)</option>
+                        <option value="bn_male_kolkata">Bengali - Male (Kolkata Accent)</option>
+                        <option value="bn_female_kolkata">Bengali - Female (Kolkata Accent)</option>
+
+                        <!-- Additional languages can follow the same pattern -->
+
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">Convert to Speech</button>
+                <button type="button" onclick="window.location.href='/speech-to-text'" class="btn-back">Back</button>
+            </form>
+        </div>
+        
+    </div>
+</body>
+</html>

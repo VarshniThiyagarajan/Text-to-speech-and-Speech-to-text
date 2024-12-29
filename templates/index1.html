@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Selection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles1.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" placeholder="What language do you want to select?" id="searchInput">
+        </div>
+        
+        <!-- Grid container for languages -->
+        <div class="grid-container">
+            <div class="grid-item hindi" data-lang="Hindi"><span>Hindi/हिन्दी Language</span></div>
+            <div class="grid-item bengali" data-lang="Bengali"><span>Bengali/বাংলা Language</span></div>
+            <div class="grid-item marathi" data-lang="Marathi"><span>Marathi/मराठी Language</span></div>
+            <div class="grid-item telugu" data-lang="Telugu"><span>Telugu/తెలుగు Language</span></div>
+            <div class="grid-item tamil" data-lang="Tamil"><span>Tamil/தமிழ் Language</span></div>
+            <div class="grid-item gujarati" data-lang="Gujarati"><span>Gujarati/ગુજરાતી Language</span></div>
+            <div class="grid-item urdu" data-lang="Urdu"><span>Urdu/اردو Language</span></div>
+        </div>
+        
+        <!-- Display selected language -->
+        <div class="selected-language">
+            <h2>Selected Language: <span id="selectedLang">None</span></h2>
+        </div>
+        <button onclick="window.location.href='/phone-dial'">Dial</button>
+        <button onclick="window.location.href='/category'">Back</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/script1.js') }}"></script>
+</body>
+</html>

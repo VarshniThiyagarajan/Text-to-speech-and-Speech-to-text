@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Dialer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="phone-display-container">
+            <div id="phoneNumberDisplay" class="phone-number">Enter Number</div>
+            <button class="delete-btn-top" onclick="deleteLast()">&#9003;</button>
+        </div>
+        <a id="addNumberLink" href="#" class="add-number-link">Add Number</a>
+        
+        <div class="dial-pad">
+            <div class="row">
+                <button class="btn" onclick="addNumber('1')">1<br><span> </span></button>
+                <button class="btn" onclick="addNumber('2')">2<br><span>ABC</span></button>
+                <button class="btn" onclick="addNumber('3')">3<br><span>DEF</span></button>
+            </div>
+            <div class="row">
+                <button class="btn" onclick="addNumber('4')">4<br><span>GHI</span></button>
+                <button class="btn" onclick="addNumber('5')">5<br><span>JKL</span></button>
+                <button class="btn" onclick="addNumber('6')">6<br><span>MNO</span></button>
+            </div>
+            <div class="row">
+                <button class="btn" onclick="addNumber('7')">7<br><span>PQRS</span></button>
+                <button class="btn" onclick="addNumber('8')">8<br><span>TUV</span></button>
+                <button class="btn" onclick="addNumber('9')">9<br><span>WXYZ</span></button>
+            </div>
+            <div class="row">
+                <button class="btn" onclick="addNumber('*')">*</button>
+                <button class="btn" onclick="addNumber('0')">0</button>
+                <button class="btn" onclick="addNumber('#')">#</button>
+            </div>
+        </div>
+
+        <div class="bottom-actions">
+            <button class="call-btn" onclick="startCall()">&#128222;</button>
+        </div>
+        <button onclick="window.location.href='/language'">Back</button>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

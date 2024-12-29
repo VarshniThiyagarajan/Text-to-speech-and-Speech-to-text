@@ -1,0 +1,152 @@
+/* styles.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #1d44b9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    width: 350px;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.logo img {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+}
+
+.illustration img {
+    width: 100px;
+    margin: 10px auto;
+    display: block;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h2 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #333;
+}
+
+.header h5 {
+    font-family: cursive;
+
+}
+
+.buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sign-up-btn, .login-btn {
+    background-color: transparent;
+    border: 1px solid #1d44b9;
+    color:#1d44b9;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin: 5px;
+    width: 120px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sign-up-btn:hover, .login-btn:hover {
+    background-color:#1d44b9;
+    color: #fff;
+}
+
+.login-form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color:#1d44b9;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #17a245;
+}
+
+.forgot-password {
+    font-size: 12px;
+    color:#1d44b9;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.or-continue {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.or-continue p {
+    font-size: 14px;
+    color: #555;
+}
+
+.social-media {
+    text-align: center;
+}
+
+.social-btn {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    font-size: 20px;
+    color: #555;
+    cursor: pointer;
+}
+
+.social-btn:hover {
+    border-color:#1d44b9;
+}
+
+.google {
+    color: #db4437;
+}
+
+.facebook {
+    color: #4267b2;
+}
+
+.apple {
+    color: #000;
+}
